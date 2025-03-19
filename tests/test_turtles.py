@@ -3,7 +3,7 @@ from turtle import Turtle, Screen
 import time
 
 screen = Screen()
-screen.setup(width=700, height=600)
+screen.setup(width=800, height=600)
 user_input = screen.textinput("Turtle race bet", "Which turtle will win this race? Make your bet: ")
 
 
@@ -26,7 +26,6 @@ def create_turtles(height, colors):
 colors = ['blue', 'red', 'pink', 'yellow', 'orange', 'black', 'green', 'violet', 'brown', 'grey']
 turtles = create_turtles(700, colors)
 
-# Стартовый отсчет
 countdown = Turtle()
 countdown.hideturtle()
 countdown.penup()
@@ -47,23 +46,23 @@ while game:
             winner = race_turtle
             break
 
-# Отображаем победителя
+# winner
 win_turtle = Turtle()
 win_turtle.hideturtle()
 win_turtle.penup()
 win_turtle.setposition(-50, 250)
 win_turtle.write(f"The winner is {winner.color()[0]}!", align="center", font=("Arial", 24, "bold"))
 
-# Победитель "празднует" (кружится)
-for _ in range(36):  # 36 раз по 10 градусов = полный круг
+# celebrated
+for _ in range(36):
     winner.right(10)
     time.sleep(0.05)
 
-# Проверяем, угадал ли игрок
+#bet
 if user_input and user_input.lower() == winner.color()[0]:
     win_turtle.setposition(-50, 200)
     win_turtle.write("You are the winner!!!", align="center", font=("Arial", 24, "bold"))
 
-# Закрываем окно через 3 секунды
+
 time.sleep(3)
 screen.bye()
